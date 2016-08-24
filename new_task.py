@@ -7,7 +7,7 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
 
 channel = connection.channel()
 
-channel.queue_declare(queue='hello')
+channel.queue_declare(queue='task_queue', durable=True)
 
 message = ' '.join(sys.argv[1:]) or "Hello World!"
 channel.basic_publish(exchange='',

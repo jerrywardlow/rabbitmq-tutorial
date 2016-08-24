@@ -7,7 +7,7 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
 
 channel = connection.channel()
 
-channel.queue_declare(queue='hello')
+channel.queue_declare(queue='task_queue', durable=True)
 
 def callback(ch, method, proeprties, body):
     print(" [x] Received %r" % body)
