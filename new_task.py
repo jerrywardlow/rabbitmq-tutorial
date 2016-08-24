@@ -16,3 +16,4 @@ channel.basic_publish(exchange='',
                          delivery_mode = 2,
                       ))
 print(" [x] Sent %r" % message)
+connection.close()
