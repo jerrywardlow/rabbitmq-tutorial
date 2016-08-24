@@ -17,7 +17,7 @@ def callback(ch, method, proeprties, body):
 
 channel.basic_qos(prefetch_count=1)
 channel.basic_consume(callback,
-                      queue='hello')
+                      queue='task_queue')
 
 print(' [*] Waiting for messages, ditch with Ctrl-C')
 channel.start_consuming()
