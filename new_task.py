@@ -1,5 +1,12 @@
 #!/usr/bin/python
 import sys
+import pika
+
+connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+
+channel = connection.channel()
+
+channel.queue_declare(queue='hello')
 
 message = ' '.join(sys.argv[1:]) or "Hello World!"
 channel.basic_publish(exchange='',
