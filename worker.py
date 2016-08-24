@@ -2,7 +2,8 @@
 import time
 import pika
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+connection = pika.BlockingConnection(pika.ConnectionParameters(
+    host='localhost'))
 
 channel = connection.channel()
 
@@ -15,7 +16,7 @@ def callback(ch, method, proeprties, body):
 
 channel.basic_consume(callback,
                       queue='hello',
-                       no_ack=True)
+                      no_ack=True)
 
 print(' [*] Waiting for messages, ditch with Ctrl-C')
 channel.start_consuming()
